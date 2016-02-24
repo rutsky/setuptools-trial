@@ -53,7 +53,7 @@ class TrialTest(test.test):
                 "You may specify a module or a suite, but not both"
             )
 
-        self.test_args = self.test_suite
+        self.test_args = [self.test_suite]
 
     def run_tests(self):
         global all_modules
