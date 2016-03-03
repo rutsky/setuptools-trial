@@ -4,11 +4,12 @@
 # The functionality of this plugin was contributed from
 # the Elisa project: http://elisa.fluendo.com/.
 
-import os, re
+import os
+import re
 
 from setuptools import find_packages, setup
 
-trove_classifiers=[
+trove_classifiers = [
     "Development Status :: 4 - Beta",
     "License :: OSI Approved :: BSD License",
     "License :: DFSG approved",
@@ -23,15 +24,15 @@ trove_classifiers=[
     "Topic :: Utilities",
     "Topic :: Software Development :: Libraries",
     "Framework :: Setuptools Plugin",
-    ]
+]
 
-PKG='setuptools_trial'
+PKG = 'setuptools_trial'
 VERSIONFILE = os.path.join(PKG, "_version.py")
 verstr = "unknown"
 try:
     verstrline = open(VERSIONFILE, "rt").read()
 except EnvironmentError:
-    pass # Okay, there is no version file.
+    pass  # Okay, there is no version file.
 else:
     VSRE = r"^verstr = ['\"]([^'\"]*)['\"]"
     mo = re.search(VSRE, verstrline, re.M)
@@ -39,37 +40,38 @@ else:
         verstr = mo.group(1)
     else:
         print("unable to find version in %s" % (VERSIONFILE,))
-        raise RuntimeError("If %s.py exists, it is required to be well-formed." % (VERSIONFILE,))
+        raise RuntimeError(
+            "If %s.py exists, it is required to be well-formed." % (VERSIONFILE,))
 
 setup_requires = []
 
-data_fnames=[ 'README.txt', 'COPYING.SPL.txt' ]
+data_fnames = ['README.txt', 'COPYING.SPL.txt']
 
 # In case we are building for a .deb with stdeb's sdist_dsc command, we put the
 # docs in "share/doc/python-$PKG".
-PKG='setuptools_trial'
+PKG = 'setuptools_trial'
 doc_loc = "share/doc/python-" + PKG
 data_files = [(doc_loc, data_fnames)]
 
 setup(
     name=PKG,
     version=verstr,
-    author = "Chris Galvan",
-    author_email = "cgalvan@enthought.com",
+    author="Chris Galvan",
+    author_email="cgalvan@enthought.com",
     url='http://allmydata.org/trac/' + PKG,
-    description = "Setuptools plugin that makes unit tests execute with trial instead of pyunit.",
-    entry_points = {
+    description="Setuptools plugin that makes unit tests execute with trial instead of pyunit.",
+    entry_points={
         'distutils.commands': [
             'trial = setuptools_trial.setuptools_trial:TrialTest',
         ],
     },
-    install_requires = ["Twisted >= 2.4.0"],
-    setup_requires = setup_requires,
-    keywords = "distutils setuptools trial setuptools_plugin",
-    license = "BSD",
-    packages = find_packages(),
+    install_requires=["Twisted >= 2.4.0"],
+    setup_requires=setup_requires,
+    keywords="distutils setuptools trial setuptools_plugin",
+    license="BSD",
+    packages=find_packages(),
     include_package_data=True,
     data_files=data_files,
     classifiers=trove_classifiers,
-    zip_safe = False, # We prefer unzipped for easier access.
-    )
+    zip_safe=False,  # We prefer unzipped for easier access.
+)

@@ -10,6 +10,7 @@ from setuptools.command import test
 # list of tuples of (package, module, module_file)
 all_modules = None
 
+
 class TrialTest(test.test):
     """
     Twisted Trial setuptools command
@@ -18,10 +19,10 @@ class TrialTest(test.test):
     user_options = test.test.user_options + [
         ('rterrors', 'e', "Realtime errors: print out tracebacks as soon as they occur."),
         ('debug-stacktraces', 'B', "Report Deferred creation and callback stack traces."),
-        ('coverage','c', "Report coverage data."),
-        ('reactor=','r', "which reactor to use"),
+        ('coverage', 'c', "Report coverage data."),
+        ('reactor=', 'r', "which reactor to use"),
         ('reporter=', None, "Customize Trial's output with a Reporter plugin."),
-        ('until-failure','u', "Repeat test until it fails."),
+        ('until-failure', 'u', "Repeat test until it fails."),
     ]
 
     boolean_options = ['coverage', 'debug-stacktraces', 'rterrors']
@@ -50,7 +51,8 @@ class TrialTest(test.test):
 
     def run_tests(self):
         global all_modules
-        all_modules = self.distribution.get_command_obj('build_py').find_all_modules()
+        all_modules = self.distribution.get_command_obj(
+            'build_py').find_all_modules()
 
         # We do the import from Twisted inside the function instead of the top
         # of the file because since Twisted is a setup_requires, we can't
@@ -71,7 +73,8 @@ class TrialTest(test.test):
             # IRC, it is available but buggy on some versions of Mac OS X, so just because you
             # can install it doesn't mean we want to use it on every platform.
             # Unfortunately this leads to this error with some combinations of tools:
-            # twisted.python.usage.UsageError: The specified reactor cannot be used, failed with error: reactor already installed.
+            # twisted.python.usage.UsageError: The specified reactor cannot be
+            # used, failed with error: reactor already installed.
             if sys.platform in ("cygwin"):
                 cmd_options.extend(['--reactor', 'poll'])
         if self.reporter is not None:
@@ -83,10 +86,9 @@ class TrialTest(test.test):
         config = trial.Options()
         config.parseOptions(cmd_options)
 
-
         args = self.test_args
         if type(args) == str:
-            args = [args,]
+            args = [args, ]
 
         config['tests'] = args
 
@@ -111,6 +113,6 @@ class TrialTest(test.test):
                                   coverdir=config.coverdir)
 
         if test_result.wasSuccessful():
-            sys.exit(0) # success
+            sys.exit(0)  # success
         else:
-            sys.exit(1) # failure
+            sys.exit(1)  # failure
