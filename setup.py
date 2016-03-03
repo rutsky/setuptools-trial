@@ -4,10 +4,9 @@
 # The functionality of this plugin was contributed from
 # the Elisa project: http://elisa.fluendo.com/.
 
-import os, re, sys
+import os, re
 
 from setuptools import find_packages, setup
-from setuptools_trial.setuptools_trial import TrialTest
 
 trove_classifiers=[
     "Development Status :: 4 - Beta",
