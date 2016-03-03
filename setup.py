@@ -39,7 +39,7 @@ else:
     if mo:
         verstr = mo.group(1)
     else:
-        print "unable to find version in %s" % (VERSIONFILE,)
+        print("unable to find version in %s" % (VERSIONFILE,))
         raise RuntimeError("If %s.py exists, it is required to be well-formed." % (VERSIONFILE,))
 
 setup_requires = []
