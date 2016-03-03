@@ -3,6 +3,13 @@ import sys
 from setuptools.command import test
 
 
+# This module-scoped variable is for the benefit of trialcoverage. It
+# is ugly, but I can't think of a more principled way to let the
+# trialcoverage code figure out what packages, modules, and
+# directories were specified to the setup() functions.
+# list of tuples of (package, module, module_file)
+all_modules = None
+
 class TrialTest(test.test):
     """
     Twisted Trial setuptools command
@@ -42,6 +49,9 @@ class TrialTest(test.test):
         self.test_args = self.test_suite
 
     def run_tests(self):
+        global all_modules
+        all_modules = self.distribution.get_command_obj('build_py').find_all_modules()
+
         # We do the import from Twisted inside the function instead of the top
         # of the file because since Twisted is a setup_requires, we can't
         # assume that Twisted will be installed on the user's system prior
