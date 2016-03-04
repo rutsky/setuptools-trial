@@ -42,14 +42,15 @@ else:
     else:
         print("unable to find version in %s" % (VERSIONFILE,))
         raise RuntimeError(
-            "If %s.py exists, it is required to be well-formed." % (VERSIONFILE,))
+            "If %s.py exists, it is required to be well-formed." %
+            (VERSIONFILE,))
 
 setup_requires = []
 
 data_fnames = ['README.txt', 'COPYING.SPL.txt']
 
-# In case we are building for a .deb with stdeb's sdist_dsc command, we put the
-# docs in "share/doc/python-$PKG".
+# In case we are building for a .deb with stdeb's sdist_dsc command, we put
+# the docs in "share/doc/python-$PKG".
 PKG = 'setuptools_trial'
 doc_loc = "share/doc/python-" + PKG
 data_files = [(doc_loc, data_fnames)]
@@ -63,7 +64,8 @@ setup(
     author="Chris Galvan",
     author_email="cgalvan@enthought.com",
     url='http://allmydata.org/trac/' + PKG,
-    description="Setuptools plugin that makes unit tests execute with trial instead of pyunit.",
+    description="Setuptools plugin that makes unit tests execute with trial "
+                "instead of pyunit.",
     entry_points={
         'distutils.commands': [
             'trial = setuptools_trial.setuptools_trial:TrialTest',

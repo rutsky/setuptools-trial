@@ -17,12 +17,18 @@ class TrialTest(test.test):
     """
 
     user_options = test.test.user_options + [
-        ('rterrors', 'e', "Realtime errors: print out tracebacks as soon as they occur."),
-        ('debug-stacktraces', 'B', "Report Deferred creation and callback stack traces."),
-        ('coverage', 'c', "Report coverage data."),
-        ('reactor=', 'r', "which reactor to use"),
-        ('reporter=', None, "Customize Trial's output with a Reporter plugin."),
-        ('until-failure', 'u', "Repeat test until it fails."),
+        ('rterrors', 'e',
+         "Realtime errors: print out tracebacks as soon as they occur."),
+        ('debug-stacktraces', 'B',
+         "Report Deferred creation and callback stack traces."),
+        ('coverage', 'c',
+         "Report coverage data."),
+        ('reactor=', 'r',
+         "which reactor to use"),
+        ('reporter=', None,
+         "Customize Trial's output with a Reporter plugin."),
+        ('until-failure', 'u',
+         "Repeat test until it fails."),
     ]
 
     boolean_options = ['coverage', 'debug-stacktraces', 'rterrors']
@@ -67,12 +73,15 @@ class TrialTest(test.test):
         if self.reactor is not None:
             cmd_options.extend(['--reactor', self.reactor])
         else:
-            # Cygwin requires the poll reactor to work at all.  Linux requires the poll reactor
-            # to avoid twisted bug #3218.  In general, the poll reactor is better than the
-            # select reactor, but it is not available on all platforms.  According to exarkun on
-            # IRC, it is available but buggy on some versions of Mac OS X, so just because you
-            # can install it doesn't mean we want to use it on every platform.
-            # Unfortunately this leads to this error with some combinations of tools:
+            # Cygwin requires the poll reactor to work at all.  Linux
+            # requires the poll reactor  to avoid twisted bug #3218.
+            # In general, the poll reactor is better than the select reactor,
+            # but it is not available on all platforms.  According to
+            # exarkun on IRC, it is available but buggy on some versions of
+            # Mac OS X, so just because you can install it doesn't mean we
+            # want to use it on every platform.
+            # Unfortunately this leads to this error with some
+            # combinations of tools:
             # twisted.python.usage.UsageError: The specified reactor cannot be
             # used, failed with error: reactor already installed.
             if sys.platform in ("cygwin"):
