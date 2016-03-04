@@ -1,0 +1,4 @@
+include COPYING.SPL.txt
+include CHANGES.rst
+include README.txt
+recursive-include tests *.py
