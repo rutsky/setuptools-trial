@@ -1,1 +1,5 @@
 /*.egg
+/.eggs/
+*.egg-info/
+/.cache/
+_trial_temp/

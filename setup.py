@@ -6,6 +6,7 @@
 
 import os
 import re
+import sys
 
 from setuptools import find_packages, setup
 
@@ -53,6 +54,9 @@ PKG = 'setuptools_trial'
 doc_loc = "share/doc/python-" + PKG
 data_files = [(doc_loc, data_fnames)]
 
+if {'pytest', 'test'}.intersection(sys.argv):
+    setup_requires.append('pytest_runner')
+
 setup(
     name=PKG,
     version=verstr,
@@ -65,11 +69,18 @@ setup(
             'trial = setuptools_trial.setuptools_trial:TrialTest',
         ],
     },
-    install_requires=["Twisted >= 2.4.0"],
+    install_requires=[
+        "Twisted >= 2.4.0",
+    ],
     setup_requires=setup_requires,
+    test_suite="tests",
+    tests_require=[
+        "pytest",
+        "pytest-virtualenv",
+    ],
     keywords="distutils setuptools trial setuptools_plugin",
     license="BSD",
-    packages=find_packages(),
+    packages=find_packages(exclude=("tests",)),
     include_package_data=True,
     data_files=data_files,
     classifiers=trove_classifiers,
