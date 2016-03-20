@@ -1,4 +1,3 @@
-import os
 import pathlib
 
 TESTS_DIR = pathlib.Path(__file__).parent.resolve()
@@ -17,6 +16,20 @@ def install_setuptools_trial(virtualenv):
 def test_virtualenv(virtualenv):
     install_setuptools_trial(virtualenv)
 
-    dummy_project_src = str(TESTS_DIR / "dummy_project")
-    virtualenv.run("python setup.py trial",
-                   capture=True, cd=dummy_project_src)
+    project_src = str(TESTS_DIR / "dummy_project")
+    out = virtualenv.run(
+        "python setup.py trial",
+        capture=True,
+        cd=project_src)
+
+
+def test_test_alias(virtualenv):
+    """Test specifying alias for test = trial -m ..."""
+
+    install_setuptools_trial(virtualenv)
+
+    project_src = str(TESTS_DIR / "alias_project")
+    out = virtualenv.run(
+        "python setup.py test",
+        capture=True,
+        cd=project_src)
