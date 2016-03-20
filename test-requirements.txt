@@ -1,6 +1,10 @@
 pytest
+
 # pytest-virtualenv doesn't work on Python 3:
 # https://github.com/manahl/pytest-plugins/pull/16
 -e git+https://github.com/rutsky/pytest-plugins.git@python3-bundled#egg=pytest-fixture-config&subdirectory=pytest-fixture-config
 -e git+https://github.com/rutsky/pytest-plugins.git@python3-bundled#egg=pytest-shutil&subdirectory=pytest-shutil
 -e git+https://github.com/rutsky/pytest-plugins.git@python3-bundled#egg=pytest-virtualenv&subdirectory=pytest-virtualenv
+
+# Backport of pathlib from Python 3, required only for Python 2.7.
+pathlib2

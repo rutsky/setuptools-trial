@@ -1,16 +1,22 @@
 import os
+import pathlib
+
+TESTS_DIR = pathlib.Path(__file__).parent.resolve()
+SETUPTOOLS_TRIAL_SRC = TESTS_DIR.parent
 
 
-TESTS_DIR = os.path.dirname(__file__)
-SETUPTOOLS_TRIAL_SRC = os.path.abspath(
-    os.path.join(TESTS_DIR, os.path.pardir))
+def install_setuptools_trial(virtualenv):
+    """Install this version of setuptools_trial
 
-
-def test_virtualenv(virtualenv):
-    dummy_project_src = os.path.abspath(
-        os.path.join(TESTS_DIR, "dummy_project"))
+    Otherwise tests will load setuptools_trial from PyPI.
+    """
 
     virtualenv.run("pip install {0}".format(SETUPTOOLS_TRIAL_SRC))
 
-    virtualenv.run("python setup.py trial".format(SETUPTOOLS_TRIAL_SRC),
+
+def test_virtualenv(virtualenv):
+    install_setuptools_trial(virtualenv)
+
+    dummy_project_src = str(TESTS_DIR / "dummy_project")
+    virtualenv.run("python setup.py trial",
                    capture=True, cd=dummy_project_src)
