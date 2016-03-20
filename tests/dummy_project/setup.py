@@ -1,10 +1,10 @@
 from setuptools import find_packages, setup
 
 setup(
-    name="dummy_project",
+    name="project",
     version="1.0.0",
     setup_requires="setuptools_trial",
-    test_suite="dummy_project.test",
+    test_suite="project.test",
     tests_require=[
         "Twisted",
     ],
