@@ -13,18 +13,27 @@ def install_setuptools_trial(virtualenv):
     virtualenv.run("pip install {0}".format(SETUPTOOLS_TRIAL_SRC))
 
 
-def test_virtualenv(virtualenv):
+def test_basic(virtualenv):
     install_setuptools_trial(virtualenv)
 
     project_src = str(TESTS_DIR / "dummy_project")
+
+    # Run trial command should succeed.
     out = virtualenv.run(
         "python setup.py trial",
+        capture=True,
+        cd=project_src)
+    assert "PASSED (successes=1)" in out
+
+    # Run trial with custom reporter
+    out = virtualenv.run(
+        "python setup.py trial --reporter=text",
         capture=True,
         cd=project_src)
 
 
 def test_test_alias(virtualenv):
-    """Test specifying alias for test = trial -m ..."""
+    """Test specifying alias for test = trial"""
 
     install_setuptools_trial(virtualenv)
 
@@ -33,3 +42,4 @@ def test_test_alias(virtualenv):
         "python setup.py test",
         capture=True,
         cd=project_src)
+    assert "PASSED (successes=1)" in out
