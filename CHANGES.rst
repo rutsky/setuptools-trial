@@ -14,4 +14,8 @@ Internal changes:
 
 - Getting version from Darcs VCS was removed.
 
+- Remove trash files (prebuild eggs, PKG-INFO).
+
+- Source code is not PEP8 and pyflakes conformant.
+
 - Simple integration tests were added.
