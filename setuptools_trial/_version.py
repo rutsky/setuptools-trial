@@ -6,7 +6,7 @@
 # suffix. Please see pyutil.version_class for a description of what the
 # different fields mean.
 
-verstr = "0.5.12"
+verstr = "0.6.0"
 try:
     from pyutil.version_class import Version as pyutil_Version
     __version__ = pyutil_Version(verstr)
