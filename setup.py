@@ -88,4 +88,7 @@ setup(
     data_files=data_files,
     classifiers=trove_classifiers,
     zip_safe=False,  # We prefer unzipped for easier access.
+    extras_require={
+        ":python_version == '2.7'": ["pathlib2"],
+    },
 )

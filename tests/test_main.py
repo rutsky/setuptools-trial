@@ -1,4 +1,7 @@
-import pathlib
+try:
+    import pathlib
+except ImportError:
+    import pathlib2 as pathlib
 
 TESTS_DIR = pathlib.Path(__file__).parent.resolve()
 SETUPTOOLS_TRIAL_SRC = TESTS_DIR.parent
