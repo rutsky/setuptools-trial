@@ -10,5 +10,5 @@ def test_virtualenv(virtualenv):
 
     virtualenv.run("pip install {0}".format(setuptools_trial_src))
 
-    print(virtualenv.run("python setup.py trial".format(setuptools_trial_src),
-                         capture=True, cd=dummy_project_src))
+    virtualenv.run("python setup.py trial".format(setuptools_trial_src),
+                   capture=True, cd=dummy_project_src)
