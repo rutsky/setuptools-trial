@@ -5,7 +5,5 @@ CHANGES
 ------------------
 
 - Fix working with recent versions of setuptools.
-
-Internal changes:
-
 - Getting version from Darcs VCS was removed.
+- Simple integration tests were added.
