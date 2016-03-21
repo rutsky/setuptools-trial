@@ -46,7 +46,7 @@ else:
 
 setup_requires = []
 
-data_fnames = ['README.txt', 'COPYING.SPL.txt']
+data_fnames = ['README.rst', 'COPYING.SPL.txt']
 
 # In case we are building for a .deb with stdeb's sdist_dsc command, we put
 # the docs in "share/doc/python-$PKG".
