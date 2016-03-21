@@ -12,6 +12,7 @@ install:
   - "%PYTHON%\\python.exe -m pip install -U pip setuptools"
   # Twisted requires pywin32 on Windows in order to spawn processes.
   - "%PYTHON%\\python.exe -m pip install pypiwin32"
+  - "%PYTHON%\\python.exe -m pip install -rtest-requirements.txt"
 
 build: false
 
