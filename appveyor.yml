@@ -1,0 +1,19 @@
+# AppVeyor CI
+# https://www.appveyor.com/docs
+
+environment:
+  matrix:
+    # For Python versions available on AppVeyor, see
+    # http://www.appveyor.com/docs/installed-software#python
+    - PYTHON: "C:\\Python27"
+
+install:
+  # Upgrade pip and setuptools. Just in case.
+  - "%PYTHON%\\python.exe -m pip install -U pip setuptools"
+  # Twisted requires pywin32 on Windows in order to spawn processes.
+  - "%PYTHON%\\python.exe -m pip install pypiwin32"
+
+build: false
+
+test_script:
+  - "%PYTHON%\\python.exe setup.py test"
