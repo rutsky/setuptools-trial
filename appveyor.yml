@@ -13,6 +13,7 @@ install:
   # Twisted requires pywin32 on Windows in order to spawn processes.
   - "%PYTHON%\\python.exe -m pip install pypiwin32"
   - "%PYTHON%\\python.exe -m pip install -rtest-requirements.txt"
+  - "set VIRTUALENV_FIXTURE_EXECUTABLE=%PYTHON%\\Scripts\\virtualenv.exe"
 
 build: false
 
