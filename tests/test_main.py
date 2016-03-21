@@ -1,7 +1,11 @@
+import sys
+
 try:
     import pathlib
 except ImportError:
     import pathlib2 as pathlib
+
+import pytest
 
 TESTS_DIR = pathlib.Path(__file__).parent.resolve()
 SETUPTOOLS_TRIAL_SRC = TESTS_DIR.parent
@@ -16,6 +20,8 @@ def install_setuptools_trial(virtualenv):
     virtualenv.run("pip install {0}".format(SETUPTOOLS_TRIAL_SRC))
 
 
+@pytest.mark.xfail(sys.version_info >= (3,) and sys.platform == 'win32',
+                   reason="Twisted tests fails on Windows on Python 3")
 def test_basic(virtualenv):
     install_setuptools_trial(virtualenv)
 
@@ -35,6 +41,8 @@ def test_basic(virtualenv):
         cd=project_src)
 
 
+@pytest.mark.xfail(sys.version_info >= (3,) and sys.platform == 'win32',
+                   reason="Twisted tests fails on Windows on Python 3")
 def test_test_alias(virtualenv):
     """Test specifying alias for test = trial"""
 
