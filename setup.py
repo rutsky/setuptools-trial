@@ -64,7 +64,7 @@ setup(
     author_email="cgalvan@enthought.com",
     maintainer="Vladimir Rutsky",
     maintainer_email="vladimir@rutsky.org",
-    url='http://allmydata.org/trac/' + PKG,
+    url='https://github.com/rutsky/setuptools-trial',
     description="Setuptools plugin that makes unit tests execute with trial "
                 "instead of pyunit.",
     entry_points={

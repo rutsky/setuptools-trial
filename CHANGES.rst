@@ -12,6 +12,9 @@ CHANGES
 
 - Package "zip-safety" is determined by setuptools.
 
+- New package home page is https://github.com/rutsky/setuptools-trial,
+  please report issues there!
+
 Internal changes:
 
 - Getting version from Darcs VCS was removed.
