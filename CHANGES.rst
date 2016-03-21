@@ -1,7 +1,7 @@
 CHANGES
 =======
 
-0.6.0 (2016-XX-XX)
+0.6.0 (2016-03-21)
 ------------------
 
 - Fix working with recent versions of setuptools.
