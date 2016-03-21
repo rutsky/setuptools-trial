@@ -80,6 +80,7 @@ setup(
     tests_require=[
         "pytest",
         "pytest-virtualenv",
+        "virtualenv",
     ],
     keywords="distutils setuptools trial setuptools_plugin",
     license="BSD",

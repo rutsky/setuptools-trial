@@ -1,4 +1,5 @@
 pytest
+virtualenv
 
 # pytest-virtualenv doesn't work on Python 3:
 # https://github.com/manahl/pytest-plugins/pull/16
