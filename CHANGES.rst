@@ -10,6 +10,8 @@ CHANGES
   Currently Python 2.7 and Python 3.4, 3.5 versions are supported
   (should work in other Python 3 releases too, but it is not tested).
 
+- Package "zip-safety" is determined by setuptools.
+
 Internal changes:
 
 - Getting version from Darcs VCS was removed.
