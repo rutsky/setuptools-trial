@@ -1,4 +1,6 @@
 include COPYING.SPL.txt
 include CHANGES.rst
 include README.txt
-recursive-include tests *.py
+include conftest.py
+include test-requirements.txt
+recursive-include tests *.py *.cfg
