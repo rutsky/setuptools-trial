@@ -1,6 +1,6 @@
 
-setuptools_trial Manual
-=======================
+setuptools_trial
+================
 
 About
 -----
@@ -40,8 +40,8 @@ Where ``X.Y.Z`` is a version number.
 Alternative to make a specific package use setuptools_trial without
 installing setuptools_trial into the system:
 
-  Put ``setup_requires=['setuptools_trial']`` in the call to ``setup()`` in
-  the package's ``setup.py`` file.
+Put ``setup_requires=['setuptools_trial']`` in the call to ``setup()`` in
+the package's ``setup.py`` file.
 
 
 Usage
