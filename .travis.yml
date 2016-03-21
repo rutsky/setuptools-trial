@@ -1,13 +1,20 @@
 language: python
 sudo: false
 python:
-  - 2.7
-  - 3.4
-  - 3.5
-
+- 2.7
+- 3.4
+- 3.5
 install:
-  - pip install --upgrade pip setuptools wheel
-  - pip install tox-travis
-
+- pip install --upgrade pip setuptools wheel
+- pip install tox-travis
 script:
-  - tox
+- tox
+deploy:
+  provider: pypi
+  user: setuptools-trial-deploy
+  password:
+    secure: KKshcmdcmg7pOf2UwKiFp/MPgi9jO70LYAsnuUVBWPZ6aL4vHIORP2PV4vjeoRJ4uxydLM/+b88Ar3s0DNIPIIA6f2DN2QgvrGKqoNIM5PIbf5x8qwiBiDE38h6XAXXKyJcY50EVE9xZrvYpZLSeEWFqsFlz8CR0lGfZLG2aEu6ySs8T8g6qkmBP4EkNGvX3ahBkZXlf1EVcT7FJSlzur2lbGUFAL47uV6Z7LLwqB3GQWirhLdNb7D1R1YOrIqhjH3B5e1WYCJRwMYtJowOIn+D4aJiCFiMNPObzno4v5llC0n14jTQ6kO6/mkC8mLTjmYfvYZd/7tfmFVCTahEtBg5bVTh06hcnpZ4joFTjZ59T+OYnQhesWiu8PSlpTx6MLwqX7uVsIyyI42jYJQ03jtDiC3f0f5Das4P7CUJYETksDZw3UqEmS7CQ/18B0nLYv+v9S0NhtK7+oqr3BB+wuHYGcI5V5tBK/jBlQYvPZJbqahu4P0UaswPmJOSqAQtvKcxtFvw3L29q7Uz7mD0aBL0HV6uwAfBjdE5rnbGStX6eRSpmAnGtb+MTF0nVTOdWhbcbS/ZF44R3k+iIMQKx/7MSiClJCc//TLritnZp/0jJ/Ond3YZ/aj7Wecew9ImGMdpaPoomzjxaK0ddxUuWkG/W/QZ9gWPXPFFqqBD00XQ=
+  distributions: "sdist bdist_wheel"
+  on:
+    tags: true
+    branch: master
