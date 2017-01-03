@@ -3,7 +3,7 @@ virtualenv
 
 pytest-fixture-config
 pytest-shutil
-pytest-virtualenv
+pytest-virtualenv==1.2.5
 
 # Backport of pathlib from Python 3, required only for Python 2.7.
 pathlib2
