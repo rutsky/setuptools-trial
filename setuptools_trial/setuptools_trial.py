@@ -1,6 +1,7 @@
 import sys
 
 from setuptools.command import test
+from setuptools.dist import DistutilsOptionError
 
 
 # This module-scoped variable is for the benefit of trialcoverage. It
@@ -49,6 +50,7 @@ class TrialTest(test.test):
             else:
                 self.test_suite = self.test_module
         elif self.test_module:
+            # TODO: is this code reachable? How? Add test for this code path.
             raise DistutilsOptionError(
                 "You may specify a module or a suite, but not both"
             )
