@@ -1,4 +1,4 @@
-pytest==3.4.0
+pytest==5.4.2
 virtualenv==15.1.0
 
 pytest-fixture-config==1.2.11
