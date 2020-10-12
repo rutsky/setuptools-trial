@@ -1,5 +1,5 @@
 pytest==3.4.0
-virtualenv==15.1.0
+virtualenv==20.0.34
 
 pytest-fixture-config==1.2.11
 pytest-shutil==1.2.11
